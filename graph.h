@@ -47,8 +47,8 @@ static inline node_t* get_nbr_node(interface_t* interface){
 
 	if ((&link->intf1) == interface){
 		return link->intf2.att_node;
-	}else{
-		return link->intf1.att_node;
+	}else {
+		return link->intf1.att_node:
 	}
 
 };
@@ -65,6 +65,35 @@ static inline int get_node_intf_available_slot(node_t* node){
 	return -1;
 };
 
+static inline interface_t* get_node_if_by_name(node_t* node, char* if_name){
+	interface_t* intf;
+
+	for (int i = 0; i < MAX_INTF_PER_NODE; i ++){
+		intf = node->intf[i];
+		if (!intf){
+			return NULL;
+		}
+		if ((strncmp(int->if_name, if_name, IF_NAME_SIZE) == 0){
+			return intf;
+		} 
+	}
+}
+
+static inline node_t* get_node_by_node_name(graph_t* topo, char* node_name){
+	node_t* node;
+	glthread_t* curr;
+
+	ITERATE_GLTHREAD_BEGIN(&topo->node_list, curr){
+		// Whenever iterating glthread_t list, call this func to recover the actual node_t with 'curr'
+		node = graph_glue_to_node(curr); 
+		if(strncmp(node->node_name, node_name, strlen(node_name)) == 0){
+			return node;
+	} ITERATE_GLTHREAD_END(&topo->node_list, curr);
+	
+	return NULL;	
+}
+
+
 
 void dump_graph(graph_t* graph);
 void dump_node(node_t* node);
@@ -78,6 +107,8 @@ void insert_link_between_two_nodes(
 		char* from_if_name, 
 		char* to_if_name,
 		unsigned int cost);
+
+
 
 
 #endif
