@@ -1,2 +1,2 @@
 # TCP_IP_Stack
-TCP/IP Stack implementation
+Ongoing project on TCP/IP Stack implementation using C programming
