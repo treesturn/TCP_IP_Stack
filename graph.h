@@ -50,7 +50,7 @@ static inline node_t* get_nbr_node(interface_t* interface){
 	if ((&link->intf1) == interface){
 		return link->intf2.att_node;
 	}else {
-		return link->intf1.att_node:
+		return link->intf1.att_node;
 	}
 
 };
@@ -75,7 +75,7 @@ static inline interface_t* get_node_if_by_name(node_t* node, char* if_name){
 		if (!intf){
 			return NULL;
 		}
-		if ((strncmp(int->if_name, if_name, IF_NAME_SIZE) == 0){
+		if (strncmp(intf->if_name, if_name, IF_NAME_SIZE) == 0){
 			return intf;
 		} 
 	}
@@ -90,6 +90,7 @@ static inline node_t* get_node_by_node_name(graph_t* topo, char* node_name){
 		node = graph_glue_to_node(curr); 
 		if(strncmp(node->node_name, node_name, strlen(node_name)) == 0){
 			return node;
+		}
 	} ITERATE_GLTHREAD_END(&topo->node_list, curr);
 	
 	return NULL;	

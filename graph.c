@@ -64,7 +64,7 @@ void insert_link_between_two_nodes(
 void dump_graph(graph_t* graph){
 	node_t* node;
 	glthread_t* curr;
-
+	
 	printf("Topology name: %s\n", graph->topology_name);
 
 	ITERATE_GLTHREAD_BEGIN(&graph->node_list, curr){
