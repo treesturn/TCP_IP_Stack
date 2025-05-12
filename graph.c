@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <memory.h>
+#include <comm.c>
 
 graph_t* create_new_graph(char* topology_name){
 	graph_t* graph = calloc(1, sizeof(graph_t));
@@ -17,6 +18,8 @@ node_t* create_graph_node(graph_t* graph, char* node_name){
 	node_t* node = calloc(1, sizeof(node_t));
 	strncpy(node->node_name, node_name, NODE_NAME_SIZE);
 	node->node_name[NODE_NAME_SIZE] = '\0';
+	
+	init_udp_socket(node);
 
 	init_node_nw_prop(&node->node_nw_prop);
 	init_glthread(&node->graph_glue);
