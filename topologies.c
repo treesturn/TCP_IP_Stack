@@ -1,5 +1,8 @@
 #include "graph.h"
 
+
+extern void network_start_pkt_receiver_thread(graph_t* topo);
+
 graph_t* build_first_topo(){
 
 	graph_t* topo = create_new_graph("Hello World Generic Graph");
@@ -23,5 +26,7 @@ graph_t* build_first_topo(){
 	node_set_intf_ip_address(R2_re, "eth0/3", "30.1.1.2", 24);
 	node_set_intf_ip_address(R2_re, "eth0/5", "40.1.1.2", 24);
 		
+	network_start_pkt_receiver_thread(topo);
+
 	return topo;
 }

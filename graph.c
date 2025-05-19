@@ -3,7 +3,6 @@
 #include <string.h>
 #include <stdio.h>
 #include <memory.h>
-#include <comm.c>
 
 graph_t* create_new_graph(char* topology_name){
 	graph_t* graph = calloc(1, sizeof(graph_t));
